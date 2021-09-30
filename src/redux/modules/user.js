@@ -12,6 +12,12 @@ const GET_USER = "GET_USER";
 const SET_USER = "SET_USER";
 
 // action creators
+
+// redux-actions 없었을 때....
+// const LogIn = (user) => {
+//   return {type: LOG_IN, user}
+// }
+
 const logOut = createAction(LOG_OUT, (user) => ({ user }));
 const getUser = createAction(GET_USER, (user) => ({ user }));
 const setUser = createAction(SET_USER, (user) => ({ user }));
@@ -92,9 +98,9 @@ const signupFB = (id, pwd, user_name) => {
 };
 
 const loginCheckFB = () => {
-  return function (dispatch, getState, {history}){
+  return function (dispatch, getState, { history }) {
     auth.onAuthStateChanged((user) => {
-      if(user){
+      if (user) {
         dispatch(
           setUser({
             user_name: user.displayName,
@@ -103,23 +109,30 @@ const loginCheckFB = () => {
             uid: user.uid,
           })
         );
-      }else{
+      } else {
         dispatch(logOut());
       }
-    })
-  }
-}
+    });
+  };
+};
 
 const logoutFB = () => {
-  return function (dispatch, getState, {history}) {
+  return function (dispatch, getState, { history }) {
     auth.signOut().then(() => {
       dispatch(logOut());
-      history.replace('/');
-    })
-  }
-}
+      history.replace("/");
+    });
+  };
+};
 
 // reducer
+
+// const reducer = (state={}, action={})=>{
+// switch (action.type) {
+//     case: "LOG_IN": {state.user = action.user}
+//   }
+// }
+
 export default handleActions(
   {
     [SET_USER]: (state, action) =>
