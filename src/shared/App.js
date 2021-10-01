@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { BrowserRouter, Route } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
@@ -26,11 +26,15 @@ function App() {
   const _session_key = `firebase:authUser:${apiKey}:[DEFAULT]`;
   const is_session = sessionStorage.getItem(_session_key) ? true : false;
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (is_session) {
       dispatch(userActions.loginCheckFB());
     }
   }, []);
+
+  const onClickWrite = () => {
+    history.push("/write");
+  };
 
   return (
     <>
@@ -45,7 +49,7 @@ function App() {
         </ConnectedRouter>
       </Grid>
       <Permit>
-        <Button is_float text="+"></Button>
+        <Button _onClick={onClickWrite} is_float text="+"></Button>
       </Permit>
     </>
   );

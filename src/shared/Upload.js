@@ -1,12 +1,11 @@
 import React from "react";
 
 const Upload = (props) => {
-
-    return (
-        <React.Fragment>
-            <input type="file"/>
-        </React.Fragment>
-    )
-}
+  return (
+    <>
+      <input type="file" />
+    </>
+  );
+};
 
 export default Upload;

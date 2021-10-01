@@ -36,11 +36,11 @@ const Post = (props) => {
 
 Post.defaultProps = {
   user_info: {
-    user_name: "mean0",
+    user_name: "gom",
     user_profile: "https://mean0images.s3.ap-northeast-2.amazonaws.com/4.jpeg",
   },
   image_url: "https://mean0images.s3.ap-northeast-2.amazonaws.com/4.jpeg",
-  contents: "고양이네요!",
+  contents: "곰탱이",
   comment_cnt: 10,
   insert_dt: "2021-02-27 10:00:00",
 };
