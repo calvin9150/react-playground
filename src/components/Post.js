@@ -22,7 +22,7 @@ const Post = (props) => {
           <Text>{props.contents}</Text>
         </Grid>
         <Grid>
-          <Image shape="rectangle" src={props.src} />
+          <Image shape="rectangle" src={props.image_url} />
         </Grid>
         <Grid padding="16px">
           <Text margin="0px" bold>
@@ -37,11 +37,13 @@ const Post = (props) => {
 Post.defaultProps = {
   user_info: {
     user_name: "gom",
-    user_profile: "https://mean0images.s3.ap-northeast-2.amazonaws.com/4.jpeg",
+    user_profile:
+      "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
   },
-  image_url: "https://mean0images.s3.ap-northeast-2.amazonaws.com/4.jpeg",
+  image_url:
+    "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
   contents: "곰탱이",
-  comment_cnt: 10,
+  comment_cnt: 0,
   insert_dt: "2021-02-27 10:00:00",
 };
 
