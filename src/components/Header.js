@@ -16,8 +16,6 @@ const Header = (props) => {
 
   const is_session = sessionStorage.getItem(_session_key) ? true : false;
 
-  console.log(is_session);
-
   const onClickNoti = () => {
     history.push("/noti");
   };

@@ -7,7 +7,7 @@ import Post from "../components/Post";
 
 const PostList = (props) => {
   const dispatch = useDispatch();
-
+  const user_info = useSelector((state) => state.user.user);
   const post_list = useSelector((state) => state.post.list);
   console.log(post_list);
 
@@ -17,8 +17,10 @@ const PostList = (props) => {
 
   return (
     <>
-      {/* <Post /> */}
-      {post_list.map((v, i) => {
+      {post_list.map((v) => {
+        if (user_info && v.user_info.user_id === user_info.uid) {
+          return <Post key={v.id} {...v} is_me />;
+        }
         return <Post key={v.id} {...v} />;
       })}
     </>
