@@ -10,7 +10,10 @@ const ADD_POST = "ADD_POST";
 const EDIT_POST = "EDIT_POST";
 const LOADING = "LOADING";
 
-const setPost = createAction(SET_POST, (post_list) => ({ post_list }));
+const setPost = createAction(SET_POST, (post_list, paging) => ({
+  post_list,
+  paging,
+}));
 const addPost = createAction(ADD_POST, (post) => ({ post }));
 const editPost = createAction(EDIT_POST, (post_id, post) => ({
   post_id,
@@ -156,6 +159,8 @@ const getPostFB = (start = null, size = 3) => {
     // state에서 페이징 정보 가져오기
     let _paging = getState().post.paging;
 
+    console.log("pageing", _paging);
+
     // 시작정보가 기록되었는데 다음 가져올 데이터가 없다면? 앗, 리스트가 끝났겠네요!
     // 그럼 아무것도 하지말고 return을 해야죠!
     if (_paging.start && !_paging.next) {
@@ -219,6 +224,7 @@ const getPostFB = (start = null, size = 3) => {
         // 그래야 size대로 리스트가 추가되니까요!
         // 마지막 데이터는 다음 페이지의 유무를 알려주기 위한 친구일 뿐! 리스트에 들어가지 않아요!
         post_list.pop();
+        console.log("paging", paging);
 
         dispatch(setPost(post_list, paging));
       });
