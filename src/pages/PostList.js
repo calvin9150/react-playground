@@ -16,9 +16,8 @@ const PostList = (props) => {
   const { history } = props;
 
   useEffect(() => {
-    if (post_list.length === 0) {
+    if (post_list.length < 2) {
       dispatch(postActions.getPostFB());
-      console.log("zz", paging?.next);
     }
   }, []);
 
