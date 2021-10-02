@@ -1,4 +1,3 @@
-// PostList.js
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -9,10 +8,14 @@ const PostList = (props) => {
   const dispatch = useDispatch();
   const user_info = useSelector((state) => state.user.user);
   const post_list = useSelector((state) => state.post.list);
+  const is_loading = useSelector((state) => state.post.is_loading);
+  const paging = useSelector((state) => state.post.paging);
   console.log(post_list);
 
   useEffect(() => {
-    dispatch(postActions.getPostFB());
+    if (post_list.length === 0) {
+      dispatch(postActions.getPostFB());
+    }
   }, []);
 
   return (
